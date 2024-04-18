@@ -1,3 +1,4 @@
+import Pagination from "@/Components/Pagination";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -27,7 +28,7 @@ export default function Index({auth, projects}) {
                                         <th className="px-3 py-3">Create Date</th>
                                         <th className="px-3 py-3">Due Date</th>
                                         <th className="px-3 py-3">Created By</th>
-                                        <th className="px-3 py-3">Actions</th>
+                                        <th className="px-3 py-3 text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,8 +41,8 @@ export default function Index({auth, projects}) {
                                             </td>
                                             <td className="px-3 py-2">{project.name}</td>
                                             <td className="px-3 py-2">{project.status}</td>
-                                            <td className="px-3 py-2">{project.created_at}</td>
-                                            <td className="px-3 py-2">{project.due_date}</td>
+                                            <td className="px-3 py-2 text-nowrap">{project.created_at}</td>
+                                            <td className="px-3 py-2 text-nowrap">{project.due_date}</td>
                                             <td className="px-3 py-2">{project.createdBy.name}</td>
                                             <td className="px-3 py-2">
                                                 <Link href={route('project.edit', project.id)}
@@ -61,6 +62,7 @@ export default function Index({auth, projects}) {
                                     ))}
                                 </tbody>
                             </table>
+                            <Pagination links={projects.meta.links} />
                         </div>
                     </div>
                 </div>
